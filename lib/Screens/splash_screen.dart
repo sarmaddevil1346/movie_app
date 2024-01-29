@@ -26,8 +26,13 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
           ),
           child: SafeArea(
-            child: Center(
-              child: Image.asset("assets/images/studio_logo.png"),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Image.asset("assets/images/studio_logo.png"),
+                Text("Cinem-Amatoriale")
+              ],
             ),
           ),
         ),
