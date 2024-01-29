@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/Screens/Authentication_Screens/forget_screen.dart';
 import 'package:movie_app/Screens/Authentication_Screens/login_screen.dart';
 import 'package:movie_app/Screens/Authentication_Screens/signUp_screen.dart';
 import 'package:movie_app/Screens/splash_screen.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const SignUpScreen(),
+      home: const SplashScreen(),
     );
   }
 }

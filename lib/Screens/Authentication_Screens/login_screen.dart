@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/Screens/Authentication_Screens/signUp_screen.dart';
 import 'package:movie_app/Utils/button.dart';
 import 'package:movie_app/constants/colors.dart';
 
@@ -17,76 +18,156 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       backgroundColor: AppColors.loginColor,
       body: SafeArea(
-        child: SizedBox(
-          width: double.infinity,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Image.asset(
-                  height: 172, width: 272, "assets/images/studio_logo.png"),
-              const Text(
-                "Cinem-Amatoriale",
-                style: TextStyle(
-                  fontSize: 35,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(
+              height: 30,
+            ),
+            Image.asset(
+                alignment: Alignment.center,
+                height: 111,
+                width: 170,
+                "assets/images/studio_logo.png"),
+            const Text(
+              "Cinem-Amatoriale",
+              style: TextStyle(
+                fontSize: 28,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
               ),
-              const Text(
-                "Tutti Film Che Vuol Quando Li Vuoi Tu",
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.white,
-                ),
+            ),
+            const Text(
+              "Tutti Film Che Vuol Quando Li Vuoi Tu",
+              style: TextStyle(
+                fontSize: 12,
+                color: Colors.white,
               ),
-              Container(
+            ),
+            const SizedBox(
+              height: 40,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: Container(
                 height: 476,
                 width: 366,
-                decoration: const BoxDecoration(
-                  color: Color.fromRGBO(255, 255, 255, 0.5),
+                alignment: Alignment.center,
+                padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                decoration: BoxDecoration(
+                  color: const Color.fromRGBO(255, 255, 255, 0.3),
+                  borderRadius: BorderRadius.circular(25),
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Center(child: Text("Login")),
-                    const Text("Email address"),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    const Center(
+                      child: Text(
+                        "Login",
+                        style: TextStyle(
+                            fontSize: 32,
+                            color: AppColors.whiteColor,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    const Text(
+                      "Email address",
+                      style:
+                          TextStyle(fontSize: 20, color: AppColors.whiteColor),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
                     TextFieldsWidget(
                       text: 'janecooper@gmail.com',
                       outlineInputBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30),
-                          borderSide: const BorderSide(
-                              color: Colors.white, style: BorderStyle.none)),
+                        borderRadius: BorderRadius.circular(40),
+                        borderSide: const BorderSide(
+                            color: Color.fromRGBO(255, 255, 255, 1), width: 3),
+                      ),
+                      style: const TextStyle(color: Colors.white38),
                     ),
-                    const Text("Choose a password"),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    const Text(
+                      "Choose a password",
+                      style: TextStyle(fontSize: 20, color: Colors.white),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
                     TextFieldsWidget(
                       text: '***************',
                       outlineInputBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(30),
+                        borderRadius: BorderRadius.circular(40),
                         borderSide: const BorderSide(
-                            color: Colors.white, style: BorderStyle.none),
+                            color: Color.fromRGBO(255, 255, 255, 1), width: 3),
                       ),
+                      style: const TextStyle(color: Colors.white38),
                       obscureText: true,
+                    ),
+                    const SizedBox(
+                      height: 10,
                     ),
                     const Align(
                       alignment: Alignment.topRight,
-                      child: Text("Forget Passsword"),
+                      child: Text(
+                        "Forget Passsword",
+                        style: TextStyle(
+                            fontSize: 16, color: AppColors.whiteColor),
+                      ),
                     ),
-                    ButtonWidget(text: "Login")
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    ButtonWidget(text: "Login"),
+                    const SizedBox(
+                      height: 10,
+                    ),
                   ],
                 ),
               ),
-              const Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text("Already have an account? "),
-                  Text("Sign Up"),
-                ],
-              )
-            ],
-          ),
+            ),
+            Spacer(
+              flex: 5,
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Already have an account? ",
+                  style: TextStyle(fontSize: 16, color: AppColors.whiteColor),
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SignUpScreen(),
+                      ),
+                    );
+                  },
+                  child: Text(
+                    "Sign Up",
+                    style: TextStyle(fontSize: 16, color: AppColors.whiteColor),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 20,
+            ),
+          ],
         ),
       ),
     );

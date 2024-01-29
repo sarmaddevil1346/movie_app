@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 class ButtonWidget extends StatelessWidget {
-  ButtonWidget({super.key, required this.text});
+  ButtonWidget({super.key, required this.text, this.style});
   String text;
+  final TextStyle? style;
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -13,7 +14,11 @@ class ButtonWidget extends StatelessWidget {
           color: Colors.white,
           borderRadius: BorderRadius.circular(30),
         ),
-        child: Center(child: Text(text)),
+        child: Center(
+            child: Text(
+          text,
+          style: style,
+        )),
       ),
     );
   }
