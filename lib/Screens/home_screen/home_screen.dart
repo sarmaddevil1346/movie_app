@@ -40,8 +40,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 const SizedBox(height: 20),
                 _headerUtilities.buildHeaderRow(context),
                 const SizedBox(height: 20),
-                _homeTitleSection.buildSectionTitle(
-                    "Movies", "Explore by genre and mood"),
+                _homeTitleSection.buildSectionTitle("Movies",
+                    subtitle: "Explore by genre and mood"),
                 const SizedBox(height: 15),
                 _allMoviesContainer.buildMovieContainer(
                   "The Shepherd",

@@ -3,6 +3,8 @@ import 'package:movie_app/Utils/all_titles_section.dart';
 import 'package:movie_app/Utils/text_form_field.dart';
 import 'package:movie_app/constants/colors.dart';
 
+import '../../Utils/text.dart';
+
 class SearchingMovies extends StatefulWidget {
   const SearchingMovies({super.key});
 
@@ -11,7 +13,7 @@ class SearchingMovies extends StatefulWidget {
 }
 
 class _SearchingMoviesState extends State<SearchingMovies> {
-  HomeTitleSection _homeTitleSection = HomeTitleSection();
+  final HomeTitleSection _homeTitleSection = HomeTitleSection();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -48,6 +50,116 @@ class _SearchingMoviesState extends State<SearchingMovies> {
                 ),
                 const SizedBox(
                   height: 20,
+                ),
+                Container(
+                  height: 60,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: AppColors.textFieldFillColor),
+                  child: Row(
+                    children: [
+                      Image.asset("assets/images/video_logo.png"),
+                      const Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          DefaultTextDecoration(
+                            text: 'MovieFinder',
+                            textSize: 18,
+                            fontWeight: FontWeight.w700,
+                            textColor: AppColors.whiteColor,
+                          ),
+                          DefaultTextDecoration(
+                            text: 'Determine which song is currently playing',
+                            textSize: 12,
+                            fontWeight: FontWeight.w400,
+                            textColor: AppColors.whiteColor,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    DefaultTextDecoration(
+                      text: 'Recent Searches',
+                      textSize: 24,
+                      fontWeight: FontWeight.w400,
+                      textColor: AppColors.whiteColor,
+                    ),
+                    DefaultTextDecoration(
+                      text: 'Clear',
+                      textSize: 20,
+                      fontWeight: FontWeight.w300,
+                      textColor: AppColors.whiteColor,
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: 6,
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        leading: Container(
+                          width: 50,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            image: const DecorationImage(
+                              image: AssetImage("assets/images/video_logo.png"),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                        title: const DefaultTextDecoration(
+                          text: "Godzilla Minus One",
+                          textColor: AppColors.whiteColor,
+                          fontWeight: FontWeight.w700,
+                          textSize: 20,
+                        ),
+                        subtitle: const DefaultTextDecoration(
+                          text: 'Godzilla Minus One',
+                          textColor: AppColors.whiteColor,
+                          textSize: 16,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                Container(
+                  height: 60,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: AppColors.textFieldFillColor),
+                  child: ListTile(
+                    leading: Container(
+                      width: 50,
+                      height: 50,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        image: const DecorationImage(
+                          image: AssetImage("assets/images/video_logo.png"),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                    title: const DefaultTextDecoration(
+                      text: "Godzilla Minus One",
+                      textColor: AppColors.whiteColor,
+                      fontWeight: FontWeight.w700,
+                      textSize: 20,
+                    ),
+                  ),
                 ),
               ],
             ),

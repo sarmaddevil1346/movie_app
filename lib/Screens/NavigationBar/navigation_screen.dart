@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/Screens/home_screen/home_screen.dart';
 
+import '../library_screen/library_screen.dart';
+import '../search_movies/searching_movies.dart';
+
 class NavigationWidget extends StatefulWidget {
   const NavigationWidget({Key? key}) : super(key: key);
 
@@ -60,8 +63,8 @@ class NavigationController {
 
   final screens = [
     const HomeScreen(),
-    Container(color: Colors.red),
-    Container(color: Colors.red),
+    const SearchingMovies(),
+    LibraryScreen()
   ];
 }
 

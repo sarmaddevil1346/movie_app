@@ -3,6 +3,7 @@ import 'package:movie_app/Screens/Authentication_Screens/forget_screen.dart';
 import 'package:movie_app/Screens/Authentication_Screens/login_screen.dart';
 import 'package:movie_app/Screens/Authentication_Screens/signUp_screen.dart';
 import 'package:movie_app/Screens/home_screen/home_screen.dart';
+import 'package:movie_app/Screens/library_screen/library_screen.dart';
 import 'package:movie_app/Screens/search_movies/searching_movies.dart';
 import 'package:movie_app/Screens/splash_screen.dart';
 
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const SearchingMovies(),
+      home: const NavigationWidget(),
     );
   }
 }
