@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/Screens/Authentication_Screens/forget_screen.dart';
 import 'package:movie_app/Screens/Authentication_Screens/signUp_screen.dart';
 import 'package:movie_app/Utils/button.dart';
 import 'package:movie_app/constants/colors.dart';
@@ -118,12 +119,22 @@ class _LoginScreenState extends State<LoginScreen> {
                     const SizedBox(
                       height: 10,
                     ),
-                    const Align(
+                    Align(
                       alignment: Alignment.topRight,
-                      child: Text(
-                        "Forget Passsword",
-                        style: TextStyle(
-                            fontSize: 16, color: AppColors.whiteColor),
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ForgetScreen(),
+                            ),
+                          );
+                        },
+                        child: Text(
+                          "Forget Passsword",
+                          style: TextStyle(
+                              fontSize: 16, color: AppColors.whiteColor),
+                        ),
                       ),
                     ),
                     const SizedBox(

@@ -123,17 +123,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       SizedBox(
                         height: 10,
                       ),
-                      const Align(
-                        alignment: Alignment.topRight,
-                        child: Text(
-                          "Forget Passsword",
-                          style: TextStyle(
-                              fontSize: 16, color: AppColors.whiteColor),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
                       ButtonWidget(
                         text: "Sign Up",
                         style: const TextStyle(
