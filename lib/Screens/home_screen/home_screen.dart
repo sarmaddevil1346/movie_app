@@ -43,6 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 _headerUtilities.buildHeaderRow(context),
                 const SizedBox(height: 20),
                 _homeTitleSection.buildSectionTitle("Movies",
+                    fontWeight: FontWeight.w700,
                     subtitle: "Explore by genre and mood"),
                 const SizedBox(height: 15),
                 _allMoviesContainer.buildMovieContainer(
@@ -52,7 +53,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   "assets/images/movie1.png",
                 ),
                 const SizedBox(height: 10),
-                _homeTitleSection.buildSectionTitle("Latest Movies"),
+                _homeTitleSection.buildSectionTitle("Latest Movies",
+                    fontWeight: FontWeight.w700),
                 const SizedBox(height: 10),
                 _latestMoviesSection.buildLatestMovieContainer(
                     "Playlist",
@@ -65,7 +67,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 const SizedBox(
                   height: 10,
                 ),
-                _homeTitleSection.buildSectionTitle("Top Movies"),
+                _homeTitleSection.buildSectionTitle("Top Movies",
+                    fontWeight: FontWeight.w700),
                 const SizedBox(
                   height: 10,
                 ),
@@ -76,24 +79,28 @@ class _HomeScreenState extends State<HomeScreen> {
                 const SizedBox(
                   height: 10,
                 ),
-                _homeTitleSection
-                    .buildSectionTitle("You might like these movies"),
+                _homeTitleSection.buildSectionTitle(
+                  "You might like these movies",
+                  fontWeight: FontWeight.w700,
+                ),
                 const SizedBox(
                   height: 10,
                 ),
                 SizedBox(
                   height: 200,
                   child: ListView.builder(
-                    padding: EdgeInsets.all(10),
                     physics: const BouncingScrollPhysics(),
-                    itemCount: 3,
+                    itemCount: 4,
                     scrollDirection: Axis.horizontal,
                     shrinkWrap: true,
                     itemBuilder: (BuildContext context, int index) {
-                      return const CircleAvatar(
-                        radius: 95,
-                        backgroundImage:
-                            AssetImage("assets/images/Ellipse1.png"),
+                      return const Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: CircleAvatar(
+                          radius: 90,
+                          backgroundImage:
+                              AssetImage("assets/images/Ellipse1.png"),
+                        ),
                       );
                     },
                   ),
@@ -101,7 +108,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 const SizedBox(
                   height: 10,
                 ),
-                _homeTitleSection.buildSectionTitle("Recently played"),
+                _homeTitleSection.buildSectionTitle(
+                  "Recently played",
+                  fontWeight: FontWeight.w700,
+                ),
                 const SizedBox(
                   height: 10,
                 ),
@@ -112,7 +122,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 const SizedBox(
                   height: 10,
                 ),
-                _homeTitleSection.buildSectionTitle("Favourte"),
+                _homeTitleSection.buildSectionTitle(
+                  "Favourite",
+                  fontWeight: FontWeight.w700,
+                ),
                 const SizedBox(
                   height: 15,
                 ),
@@ -123,8 +136,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
                       return SizedBox(
-                        height: 230,
-                        width: 157,
+                        height: 200,
+                        width: 150,
                         child: Column(
                           children: [
                             Padding(
@@ -137,7 +150,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                     "assets/images/favourite_movie1.png"),
                               ),
                             ),
-                            _homeTitleSection.buildSectionTitle("Animal"),
+                            _homeTitleSection.buildSectionTitle("Animal",
+                                fontWeight: FontWeight.w700),
                           ],
                         ),
                       );

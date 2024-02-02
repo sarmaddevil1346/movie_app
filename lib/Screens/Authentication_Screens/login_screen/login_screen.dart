@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/Screens/Authentication_Screens/login_screen/utils/build_text_fields_section.dart';
 import 'package:movie_app/Screens/Authentication_Screens/signup_screen/signUp_screen.dart';
+import 'package:movie_app/Utils/text.dart';
 import 'package:movie_app/constants/colors.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -29,20 +30,17 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 111,
                   width: 170,
                   "assets/images/studio_logo.png"),
-              const Text(
-                "Cinem-Amatoriale",
-                style: TextStyle(
-                  fontSize: 28,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
+              DefaultTextDecoration(
+                text: "Cinem-Amatoriale",
+                textSize: 28,
+                fontWeight: FontWeight.w700,
+                textColor: AppColors.whiteColor,
               ),
-              const Text(
-                "Tutti Film Che Vuol Quando Li Vuoi Tu",
-                style: TextStyle(
-                  fontSize: 12,
-                  color: Colors.white,
-                ),
+              DefaultTextDecoration(
+                text: "Tutti Film Che Vuol Quando Li Vuoi Tu",
+                textSize: 12,
+                fontWeight: FontWeight.w500,
+                textColor: AppColors.whiteColor,
               ),
               const SizedBox(
                 height: 35,
@@ -58,25 +56,27 @@ class _LoginScreenState extends State<LoginScreen> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text(
-                    "Already have an account? ",
-                    style: TextStyle(fontSize: 16, color: AppColors.whiteColor),
+                  DefaultTextDecoration(
+                    text: "Already have an account? ",
+                    textSize: 18,
+                    fontWeight: FontWeight.w400,
+                    textColor: AppColors.whiteColor,
                   ),
                   InkWell(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const SignUpScreen(),
-                        ),
-                      );
-                    },
-                    child: const Text(
-                      "Sign Up",
-                      style:
-                          TextStyle(fontSize: 16, color: AppColors.whiteColor),
-                    ),
-                  ),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const SignUpScreen(),
+                          ),
+                        );
+                      },
+                      child: DefaultTextDecoration(
+                        text: 'Sign Up',
+                        textColor: AppColors.whiteColor,
+                        fontWeight: FontWeight.w400,
+                        textSize: 18,
+                      )),
                 ],
               ),
               const SizedBox(

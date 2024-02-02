@@ -136,7 +136,7 @@ class _SearchingMoviesState extends State<SearchingMovies> {
                   ),
                 ),
                 Container(
-                  height: 60,
+                  height: 70,
                   width: double.infinity,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
@@ -159,7 +159,15 @@ class _SearchingMoviesState extends State<SearchingMovies> {
                       fontWeight: FontWeight.w700,
                       textSize: 20,
                     ),
+                    trailing: Icon(
+                      Icons.play_arrow,
+                      size: 30,
+                      color: Colors.white,
+                    ),
                   ),
+                ),
+                SizedBox(
+                  height: 20,
                 ),
               ],
             ),

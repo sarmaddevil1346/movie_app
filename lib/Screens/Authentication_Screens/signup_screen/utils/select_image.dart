@@ -22,7 +22,7 @@ class PicImageSectionWidget {
             fit: StackFit.expand,
             children: [
               Positioned(
-                  bottom: -15,
+                  bottom: -16,
                   left: 0,
                   right: 0,
                   child: Center(
@@ -33,7 +33,7 @@ class PicImageSectionWidget {
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(20),
                           border: Border.all(
-                              color: AppColors.loginColor, width: 3)),
+                              color: AppColors.loginColor, width: 4)),
                       child: const Center(
                         child: Icon(
                           Icons.add,

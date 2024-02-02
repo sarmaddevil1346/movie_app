@@ -27,19 +27,20 @@ class HomeHeaderUtilities {
             backgroundImage: AssetImage("assets/images/profile_person.png"),
           ),
         ),
-        const SizedBox(width: 10),
+        const SizedBox(width: 15),
         const Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             DefaultTextDecoration(
               text: 'Good Morning',
               textColor: AppColors.whiteColor,
-              fontWeight: FontWeight.w800,
+              fontWeight: FontWeight.w700,
               textSize: 20,
             ),
             DefaultTextDecoration(
               text: 'Jane Cooper',
               textColor: AppColors.whiteColor,
+              fontWeight: FontWeight.w300,
               textSize: 16,
             ),
           ],

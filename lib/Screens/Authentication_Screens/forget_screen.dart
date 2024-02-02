@@ -60,11 +60,14 @@ class _ForgetScreenState extends State<ForgetScreen> {
                       height: 10,
                     ),
                     const Center(
-                      child: DefaultTextDecoration(
-                        text: "Forgot Password",
-                        textColor: Colors.white,
-                        textSize: 32,
-                        fontWeight: FontWeight.w800,
+                      child: Text(
+                        "Forgot Password",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 32,
+                          fontFamily: "Abril",
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
                     ),
                     const Spacer(),
@@ -82,7 +85,7 @@ class _ForgetScreenState extends State<ForgetScreen> {
                         "Forgot Your Password",
                         style: TextStyle(
                             fontSize: 25,
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.w400,
                             color: Colors.white),
                       ),
                     ),
@@ -94,9 +97,22 @@ class _ForgetScreenState extends State<ForgetScreen> {
                           "Please enter the email address associated with your account. We'll mail you a link to reset your password.",
                       textColor: Colors.white,
                       textSize: 18,
+                      fontWeight: FontWeight.w300,
                       textAlign: TextAlign.center,
                     ),
                     const Spacer(),
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: const DefaultTextDecoration(
+                        text: "Email address",
+                        textColor: AppColors.whiteColor,
+                        fontWeight: FontWeight.w700,
+                        textSize: 20,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
                     TextFieldsWidget(
                       text: "Email Address",
                       outlineInputBorder: OutlineInputBorder(
@@ -116,7 +132,9 @@ class _ForgetScreenState extends State<ForgetScreen> {
                       child: ButtonWidget(
                         text: 'Send',
                         style: const TextStyle(
-                            color: AppColors.loginColor, fontSize: 16),
+                            color: AppColors.loginColor,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700),
                         onTap: () {
                           Navigator.push(
                             context,

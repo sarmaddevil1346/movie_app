@@ -28,14 +28,41 @@ class _SignUpScreenState extends State<SignUpScreen> {
               const SizedBox(
                 height: 20,
               ),
-              const Center(
-                child: Text(
-                  "SignUp",
-                  style: TextStyle(
-                      fontSize: 32,
-                      color: AppColors.whiteColor,
-                      fontWeight: FontWeight.bold),
-                ),
+              Row(
+                children: [
+                  InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const LoginScreen(),
+                          ),
+                        );
+                      },
+                      child: const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 20.0),
+                        child: Align(
+                          alignment: Alignment.topLeft,
+                          child: Icon(
+                            Icons.arrow_back_rounded,
+                            color: Colors.white,
+                            size: 30,
+                          ),
+                        ),
+                      )),
+                  const Spacer(),
+                  const Text(
+                    "SignUp",
+                    style: TextStyle(
+                        fontSize: 32,
+                        color: AppColors.whiteColor,
+                        fontFamily: "Abril",
+                        fontWeight: FontWeight.w400),
+                  ),
+                  const Spacer(
+                    flex: 2,
+                  ),
+                ],
               ),
               const SizedBox(
                 height: 80,
@@ -69,7 +96,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 children: [
                   const Text(
                     "Already have an account? ",
-                    style: TextStyle(fontSize: 16, color: AppColors.whiteColor),
+                    style: TextStyle(
+                        fontSize: 16,
+                        color: AppColors.whiteColor,
+                        fontWeight: FontWeight.w400),
                   ),
                   InkWell(
                     onTap: () {
@@ -82,8 +112,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     },
                     child: const Text(
                       "Sign In",
-                      style:
-                          TextStyle(fontSize: 18, color: AppColors.whiteColor),
+                      style: TextStyle(
+                          fontSize: 18,
+                          color: AppColors.whiteColor,
+                          fontWeight: FontWeight.w400),
                     ),
                   ),
                 ],

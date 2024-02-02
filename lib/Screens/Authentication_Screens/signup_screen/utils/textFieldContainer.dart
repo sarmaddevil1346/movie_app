@@ -15,7 +15,10 @@ class TextFieldSection {
         ),
         const Text(
           "Full Name  ",
-          style: TextStyle(fontSize: 20, color: AppColors.whiteColor),
+          style: TextStyle(
+              fontSize: 20,
+              color: AppColors.whiteColor,
+              fontWeight: FontWeight.w700),
         ),
         const SizedBox(
           height: 10,
@@ -31,7 +34,11 @@ class TextFieldSection {
         ),
         const Text(
           "Email address",
-          style: TextStyle(fontSize: 20, color: AppColors.whiteColor),
+          style: TextStyle(
+            fontSize: 20,
+            color: AppColors.whiteColor,
+            fontWeight: FontWeight.w700,
+          ),
         ),
         const SizedBox(
           height: 10,
@@ -47,7 +54,11 @@ class TextFieldSection {
         ),
         const Text(
           "Choose a password",
-          style: TextStyle(fontSize: 20, color: AppColors.whiteColor),
+          style: TextStyle(
+            fontSize: 20,
+            color: AppColors.whiteColor,
+            fontWeight: FontWeight.w700,
+          ),
         ),
         const SizedBox(
           height: 10,
@@ -63,7 +74,11 @@ class TextFieldSection {
         ),
         const Text(
           "Confirm password",
-          style: TextStyle(fontSize: 20, color: AppColors.whiteColor),
+          style: TextStyle(
+            fontSize: 20,
+            color: AppColors.whiteColor,
+            fontWeight: FontWeight.w700,
+          ),
         ),
         const SizedBox(
           height: 10,
@@ -84,6 +99,7 @@ class TextFieldSection {
           text: "Sign Up",
           style: const TextStyle(
             color: AppColors.loginColor,
+            fontWeight: FontWeight.w700,
             fontSize: 16,
           ),
           onTap: () {

@@ -7,17 +7,19 @@ import '../../../constants/colors.dart';
 class BottomSheetSection {
   Future displayBottomSheet(context) {
     return showModalBottomSheet(
+      clipBehavior: Clip.none,
       barrierColor: Colors.black87,
       context: context,
       builder: (context) {
         return SingleChildScrollView(
           child: Container(
+            clipBehavior: Clip.none,
             padding: const EdgeInsets.all(16.0),
             decoration: const BoxDecoration(
                 color: AppColors.loginColor,
                 borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(20),
-                    topLeft: Radius.circular(20))),
+                    topRight: Radius.circular(30),
+                    topLeft: Radius.circular(30))),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/Utils/text.dart';
 
 import '../../../../Utils/button.dart';
 import '../../../../Utils/text_form_field.dart';
@@ -28,17 +29,21 @@ class TextFieldSection {
             child: Text(
               "Login",
               style: TextStyle(
-                  fontSize: 32,
-                  color: AppColors.whiteColor,
-                  fontWeight: FontWeight.bold),
+                fontSize: 32,
+                fontFamily: 'Abril',
+                color: AppColors.whiteColor,
+                fontWeight: FontWeight.w400,
+              ),
             ),
           ),
           const SizedBox(
             height: 10,
           ),
-          const Text(
-            "Email address",
-            style: TextStyle(fontSize: 20, color: AppColors.whiteColor),
+          DefaultTextDecoration(
+            text: "Email address",
+            textColor: AppColors.whiteColor,
+            textSize: 20,
+            fontWeight: FontWeight.w700,
           ),
           const SizedBox(
             height: 10,
@@ -57,7 +62,11 @@ class TextFieldSection {
           ),
           const Text(
             "Choose a password",
-            style: TextStyle(fontSize: 20, color: Colors.white),
+            style: TextStyle(
+              fontSize: 20,
+              color: Colors.white,
+              fontWeight: FontWeight.w700,
+            ),
           ),
           const SizedBox(
             height: 10,
@@ -88,7 +97,11 @@ class TextFieldSection {
               },
               child: const Text(
                 "Forget Password",
-                style: TextStyle(fontSize: 16, color: AppColors.whiteColor),
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                  color: AppColors.whiteColor,
+                ),
               ),
             ),
           ),
@@ -97,6 +110,10 @@ class TextFieldSection {
           ),
           ButtonWidget(
             text: "Login",
+            style: TextStyle(
+                fontWeight: FontWeight.w700,
+                color: AppColors.loginColor,
+                fontSize: 16),
             onTap: () {
               Navigator.push(
                 context,

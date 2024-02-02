@@ -25,10 +25,10 @@ class LibraryScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
-                DefaultTextDecoration(
+                const DefaultTextDecoration(
                   text: "Library",
                   textSize: 32,
                   fontWeight: FontWeight.w700,
@@ -38,7 +38,7 @@ class LibraryScreen extends StatelessWidget {
                   height: 20,
                 ),
                 TextFieldsWidget(
-                  text: 'Search',
+                  text: 'Search Movies',
                   filled: true,
                   fillColor: AppColors.textFieldFillColor,
                   preFixColor: AppColors.whiteColor,
@@ -61,7 +61,7 @@ class LibraryScreen extends StatelessWidget {
                             getLibraryModels[index].imagePath),
                         title: Text(
                           getLibraryModels[index].title,
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: AppColors.whiteColor,
                             fontWeight: FontWeight.w600,
                             fontSize: 18,
@@ -72,7 +72,7 @@ class LibraryScreen extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  height: 60,
+                  height: 70,
                   width: double.infinity,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
@@ -95,9 +95,14 @@ class LibraryScreen extends StatelessWidget {
                       fontWeight: FontWeight.w700,
                       textSize: 20,
                     ),
+                    trailing: const Icon(
+                      Icons.play_arrow,
+                      size: 30,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 )
               ],

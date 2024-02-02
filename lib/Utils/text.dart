@@ -6,7 +6,7 @@ class DefaultTextDecoration extends StatelessWidget {
     this.textSize = 16,
     this.textColor = Colors.black,
     required this.text,
-    this.fontWeight = FontWeight.normal,
+    this.fontWeight = FontWeight.w700,
     int? maxLines,
     this.textAlign,
   });

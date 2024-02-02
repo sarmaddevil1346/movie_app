@@ -37,11 +37,12 @@ class AllMoviesContainer {
                   text: title,
                   textSize: 20,
                   textColor: AppColors.whiteColor,
-                  fontWeight: FontWeight.w600,
+                  fontWeight: FontWeight.w700,
                 ),
                 DefaultTextDecoration(
                   text: date,
                   textSize: 14,
+                  fontWeight: FontWeight.w300,
                   textColor: AppColors.whiteColor,
                 ),
                 Row(

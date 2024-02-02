@@ -11,7 +11,7 @@ class TopMoviesSection {
         return Padding(
           padding: const EdgeInsets.all(10.0),
           child: Image.asset(
-              height: 200, width: 200, "assets/images/top_movie.png"),
+              height: 180, width: 170, "assets/images/top_movie.png"),
         );
       },
     );
