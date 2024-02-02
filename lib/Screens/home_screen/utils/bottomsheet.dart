@@ -8,9 +8,6 @@ class BottomSheetSection {
   Future displayBottomSheet(context) {
     return showModalBottomSheet(
       barrierColor: Colors.black87,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-      ),
       context: context,
       builder: (context) {
         return SingleChildScrollView(
@@ -18,7 +15,9 @@ class BottomSheetSection {
             padding: const EdgeInsets.all(16.0),
             decoration: const BoxDecoration(
                 color: AppColors.loginColor,
-                borderRadius: BorderRadius.only(topRight: Radius.circular(20))),
+                borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(20),
+                    topLeft: Radius.circular(20))),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -44,7 +43,7 @@ class BottomSheetSection {
                     color: AppColors.whiteColor,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Image.asset(
@@ -52,7 +51,7 @@ class BottomSheetSection {
                   height: 112,
                   width: 172,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 const DefaultTextDecoration(
@@ -61,7 +60,7 @@ class BottomSheetSection {
                   textSize: 20,
                   textColor: AppColors.whiteColor,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 const DefaultTextDecoration(
@@ -70,7 +69,7 @@ class BottomSheetSection {
                   fontWeight: FontWeight.w400,
                   textColor: AppColors.whiteColor,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 const DefaultTextDecoration(
@@ -79,7 +78,7 @@ class BottomSheetSection {
                   fontWeight: FontWeight.w500,
                   textColor: AppColors.whiteColor,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 Container(
@@ -108,7 +107,7 @@ class BottomSheetSection {
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 const DefaultTextDecoration(
@@ -117,18 +116,21 @@ class BottomSheetSection {
                   fontWeight: FontWeight.w400,
                   textColor: AppColors.whiteColor,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 ButtonWidget(
                   text: "Continue",
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: AppColors.loginColor,
                     fontSize: 18,
                     fontWeight: FontWeight.w600,
                   ),
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
               ],

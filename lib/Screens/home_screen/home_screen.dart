@@ -4,6 +4,7 @@ import 'package:movie_app/Screens/home_screen/utils/home_header.dart';
 import 'package:movie_app/Utils/all_titles_section.dart';
 import 'package:movie_app/Screens/home_screen/utils/top_movies_section.dart';
 
+import '../../constants/colors.dart';
 import 'utils/latest_movies_container.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -19,6 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final AllMoviesContainer _allMoviesContainer = AllMoviesContainer();
   final LatestMoviesSection _latestMoviesSection = LatestMoviesSection();
   final TopMoviesSection _topMoviesSection = TopMoviesSection();
+  final AppColors _appColors = AppColors();
 
   @override
   Widget build(BuildContext context) {
@@ -49,44 +51,47 @@ class _HomeScreenState extends State<HomeScreen> {
                   ["Drama", "Fantasy"],
                   "assets/images/movie1.png",
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 10),
                 _homeTitleSection.buildSectionTitle("Latest Movies"),
-                const SizedBox(height: 20),
+                const SizedBox(height: 10),
                 _latestMoviesSection.buildLatestMovieContainer(
-                  "Playlist",
-                  "The Hunger Games: The\nBallad of Songbirds &amp;\nSnakes",
-                  "Fantasy",
-                  "assets/images/latest_movie.png",
-                ),
+                    "Playlist",
+                    "The Hunger Games: The\nBallad of Songbirds &amp;\nSnakes",
+                    "Fantasy",
+                    "assets/images/latest_movie.png",
+                    context,
+                    color: AppColors.whiteColor,
+                    gradient: AppColors.linearGradient),
                 const SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
                 _homeTitleSection.buildSectionTitle("Top Movies"),
                 const SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
                 SizedBox(
                   height: 200,
                   child: _topMoviesSection.topMoviesContainer(),
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
                 _homeTitleSection
                     .buildSectionTitle("You might like these movies"),
                 const SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
                 SizedBox(
-                  height: 214,
+                  height: 200,
                   child: ListView.builder(
+                    padding: EdgeInsets.all(10),
                     physics: const BouncingScrollPhysics(),
                     itemCount: 3,
                     scrollDirection: Axis.horizontal,
                     shrinkWrap: true,
                     itemBuilder: (BuildContext context, int index) {
                       return const CircleAvatar(
-                        radius: 110,
+                        radius: 95,
                         backgroundImage:
                             AssetImage("assets/images/Ellipse1.png"),
                       );
@@ -94,22 +99,22 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
                 _homeTitleSection.buildSectionTitle("Recently played"),
                 const SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
                 SizedBox(
                   height: 200,
                   child: _topMoviesSection.topMoviesContainer(),
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
-                _homeTitleSection.buildSectionTitle("Recently played"),
+                _homeTitleSection.buildSectionTitle("Favourte"),
                 const SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
                 SizedBox(
                   height: 250,
@@ -126,8 +131,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 10.0),
                               child: SizedBox(
-                                height: 200,
-                                width: 200,
+                                height: 190,
+                                width: 150,
                                 child: Image.asset(
                                     "assets/images/favourite_movie1.png"),
                               ),

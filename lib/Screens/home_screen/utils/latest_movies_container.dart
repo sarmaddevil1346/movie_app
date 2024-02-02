@@ -1,39 +1,50 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/Screens/new_posts/new_movies.dart';
 import '../../../Utils/text.dart';
 import '../../../constants/colors.dart';
-import '../../../constants/side_cut_clipper.dart';
+import '../../../Utils/side_cut_clipper.dart';
+import '../../jwdbvobv.dart';
 
 class LatestMoviesSection {
-  Widget buildLatestMovieContainer(
-    String category,
-    String title,
-    String genre,
-    String imagePath,
-  ) {
-    return Container(
-      clipBehavior: Clip.none,
-      child: Stack(
-        children: [
-          ClipPath(
-            clipper: SideCutClipper(),
+  Widget buildLatestMovieContainer(final String category, final String title,
+      final String genre, final String imagePath, context,
+      {LinearGradient? gradient, Color? color, Color? iconColor}) {
+    return Stack(
+      children: [
+        ClipPath(
+          clipper: SideCutClipper(),
+          child: InkWell(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => NewMovies(),
+                  ));
+            },
             child: Container(
               height: 154,
-              width: 398,
+              width: 450,
               decoration: BoxDecoration(
                 color: const Color.fromRGBO(255, 255, 255, 0.3),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Row(
                 children: [
-                  const SizedBox(width: 15),
-                  Expanded(
-                    child: Image.asset(
-                      imagePath,
-                      height: 130,
-                      width: 141,
+                  const SizedBox(width: 10),
+                  ClipOval(
+                    clipBehavior: Clip.none,
+                    child: Expanded(
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(15),
+                        child: Image.asset(
+                          imagePath,
+                          height: 130,
+                          width: 141,
+                        ),
+                      ),
                     ),
                   ),
-                  const SizedBox(width: 13),
+                  const SizedBox(width: 6),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,8 +56,10 @@ class LatestMoviesSection {
                       ),
                       DefaultTextDecoration(
                         text: title,
-                        textSize: 14,
+                        textSize: 12,
+                        fontWeight: FontWeight.w700,
                         textColor: AppColors.whiteColor,
+                        maxLines: 5,
                       ),
                       Container(
                         width: 100,
@@ -74,34 +87,37 @@ class LatestMoviesSection {
               ),
             ),
           ),
-          Positioned(
-            right: 0,
-            bottom: 0,
-            child: Container(
-              height: 45,
-              width: 45,
-              decoration: BoxDecoration(
+        ),
+        Positioned(
+          right: 0,
+          bottom: 11,
+          child: Container(
+            height: 45,
+            width: 45,
+            decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
-                gradient: const LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomLeft,
-                  stops: [0.3, 0.6],
-                  colors: [
-                    Color.fromRGBO(104, 119, 239, 1),
-                    Color.fromRGBO(45, 206, 239, 1),
-                  ],
-                ),
-              ),
-              child: const Center(
+                gradient: gradient,
+                color: color),
+            child: Center(
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const VideoPlayerWidget(),
+                    ),
+                  );
+                },
                 child: Icon(
                   Icons.play_arrow,
-                  color: AppColors.whiteColor,
+                  color: iconColor,
+                  size: 40,
                 ),
               ),
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

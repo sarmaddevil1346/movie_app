@@ -45,26 +45,29 @@ class AllMoviesContainer {
                   textColor: AppColors.whiteColor,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: genres
                       .map(
                         (genre) => Expanded(
-                          child: Container(
-                            width: 80,
-                            height: 30,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              border: Border.all(
-                                color: AppColors.whiteColor,
-                              ),
-                            ),
-                            child: Center(
-                              child: Text(
-                                genre,
-                                style: const TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w600,
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 10),
+                            child: Container(
+                              width: 80,
+                              height: 30,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                border: Border.all(
                                   color: AppColors.whiteColor,
+                                ),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  genre,
+                                  style: const TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600,
+                                    color: AppColors.whiteColor,
+                                  ),
                                 ),
                               ),
                             ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/Screens/home_screen/utils/bottomsheet.dart';
+import 'package:movie_app/Screens/profile_screen/profile_screen.dart';
 import 'package:movie_app/Utils/button.dart';
 import '../../../Utils/text.dart';
 import '../../../constants/colors.dart';
@@ -12,7 +13,20 @@ class HomeHeaderUtilities {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const CircleAvatar(radius: 30),
+        InkWell(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ProfileScreen(),
+              ),
+            );
+          },
+          child: const CircleAvatar(
+            radius: 30,
+            backgroundImage: AssetImage("assets/images/profile_person.png"),
+          ),
+        ),
         const SizedBox(width: 10),
         const Column(
           crossAxisAlignment: CrossAxisAlignment.start,

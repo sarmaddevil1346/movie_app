@@ -1,20 +1,17 @@
 import 'package:flutter/material.dart';
 
-/// A custom clipper to create a side-cut effect on a widget.
 class SideCutClipper extends CustomClipper<Path> {
   final double xFactor;
   final double yFactor;
 
-  /// Constructor to initialize scaling factors.
-  SideCutClipper({this.xFactor = 21, this.yFactor = 20});
+  SideCutClipper({this.xFactor = 22.5, this.yFactor = 22.5});
 
-  /// Generates the clipping path based on the provided size.
   @override
   Path getClip(Size size) {
     double height = size.height;
-    double startY = (height - height / 3) - yFactor;
+    double startY = (height - height / 2.5) - yFactor;
     double xVal = size.width;
-    double yVal = 0;
+    double yVal = 3;
     final path = Path();
 
     path.lineTo(xVal, yVal);
@@ -22,19 +19,19 @@ class SideCutClipper extends CustomClipper<Path> {
     yVal = startY;
     path.lineTo(xVal, yVal);
 
-    double scale = 0.9;
+    double scale = 1.1;
     path.cubicTo(xVal, yVal, xVal, yVal + yFactor * scale,
         xVal - xFactor * scale, yVal + yFactor * scale);
     xVal = xVal - xFactor * scale;
     yVal = yVal + yFactor * scale;
 
-    double scale1 = 1.7;
+    double scale1 = 1.1;
     path.cubicTo(xVal, yVal, xVal - xFactor * scale1, yVal,
         xVal - scale1 * xFactor, yVal + yFactor * scale1);
     xVal = xVal - scale1 * xFactor;
     yVal = yVal + scale1 * yFactor;
 
-    double scale2 = 1.2;
+    double scale2 = 1.3;
     path.cubicTo(xVal, yVal, xVal, yVal + yFactor * scale2,
         xVal + xFactor * scale2, yVal + yFactor * scale2);
     xVal = xVal + xFactor * scale2;
@@ -53,7 +50,6 @@ class SideCutClipper extends CustomClipper<Path> {
     return path;
   }
 
-  /// Always returns true to indicate that recalculation of clipping is necessary.
   @override
   bool shouldReclip(CustomClipper<Path> oldClipper) {
     return true;
