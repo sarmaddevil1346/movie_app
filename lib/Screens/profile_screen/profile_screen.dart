@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:movie_app/Utils/text.dart';
 import 'package:movie_app/constants/colors.dart';
 
-import '../../Utils/button.dart';
-
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 

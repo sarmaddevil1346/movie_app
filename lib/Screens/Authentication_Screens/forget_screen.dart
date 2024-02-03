@@ -13,8 +13,6 @@ class ForgetScreen extends StatefulWidget {
 }
 
 class _ForgetScreenState extends State<ForgetScreen> {
-  final TextEditingController _emailEditingController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size;
@@ -101,16 +99,16 @@ class _ForgetScreenState extends State<ForgetScreen> {
                       textAlign: TextAlign.center,
                     ),
                     const Spacer(),
-                    Align(
+                    const Align(
                       alignment: Alignment.topLeft,
-                      child: const DefaultTextDecoration(
+                      child: DefaultTextDecoration(
                         text: "Email address",
                         textColor: AppColors.whiteColor,
                         fontWeight: FontWeight.w700,
                         textSize: 20,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     TextFieldsWidget(

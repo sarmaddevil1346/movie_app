@@ -1,7 +1,5 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:chewie/chewie.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:video_player/video_player.dart';
 
@@ -18,7 +16,6 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
   bool _showControls = true;
   int _currentVideoIndex = 0;
   bool _isFavorite = false;
-  double _playbackSpeed = 1.0;
 
   @override
   void initState() {
@@ -59,9 +56,7 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
   }
 
   void _changeSpeed(double speed) {
-    setState(() {
-      _playbackSpeed = speed;
-    });
+    setState(() {});
     _videoPlayerController!.setPlaybackSpeed(speed);
   }
 
@@ -155,14 +150,14 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
             children: [
               Text(
                 formatDuration(currentPosition),
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 24,
                 ),
               ),
               Text(
                 formatDuration(totalDuration),
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 24,
                 ),

@@ -18,10 +18,10 @@ class SpeedDialogue extends StatelessWidget {
           ),
           child: Column(
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
-              DefaultTextDecoration(
+              const DefaultTextDecoration(
                 text: "Set as playback speed",
                 textSize: 20,
                 textColor: AppColors.whiteColor,

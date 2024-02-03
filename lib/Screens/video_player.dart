@@ -21,7 +21,6 @@ class VideoPlayerScreenState extends State<VideoPlayerScreen> {
   late ChewieController _chewieController;
   int _currentVideoIndex = 0;
   bool _isFavorite = false;
-  double _playbackSpeed = 1.0;
 
   @override
   void initState() {
@@ -102,9 +101,7 @@ class VideoPlayerScreenState extends State<VideoPlayerScreen> {
   }
 
   void _changeSpeed(double speed) {
-    setState(() {
-      _playbackSpeed = speed;
-    });
+    setState(() {});
     _videoPlayerController.setPlaybackSpeed(speed);
   }
 

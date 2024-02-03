@@ -39,7 +39,7 @@ class TextFieldSection {
           const SizedBox(
             height: 10,
           ),
-          DefaultTextDecoration(
+          const DefaultTextDecoration(
             text: "Email address",
             textColor: AppColors.whiteColor,
             textSize: 20,
@@ -73,6 +73,10 @@ class TextFieldSection {
           ),
           TextFieldsWidget(
             text: '***************',
+            suffixIcon: const Icon(
+              Icons.visibility_off_outlined,
+              color: AppColors.whiteColor,
+            ),
             outlineInputBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(40),
               borderSide: const BorderSide(
@@ -110,7 +114,7 @@ class TextFieldSection {
           ),
           ButtonWidget(
             text: "Login",
-            style: TextStyle(
+            style: const TextStyle(
                 fontWeight: FontWeight.w700,
                 color: AppColors.loginColor,
                 fontSize: 16),

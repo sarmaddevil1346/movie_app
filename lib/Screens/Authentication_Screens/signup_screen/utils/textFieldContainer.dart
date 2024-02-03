@@ -65,6 +65,10 @@ class TextFieldSection {
         ),
         TextFieldsWidget(
           text: '***************',
+          suffixIcon: const Icon(
+            Icons.visibility_off_outlined,
+            color: AppColors.whiteColor,
+          ),
           outlineInputBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(40),
             borderSide: const BorderSide(
@@ -85,6 +89,10 @@ class TextFieldSection {
         ),
         TextFieldsWidget(
           text: '***************',
+          suffixIcon: const Icon(
+            Icons.visibility_off_outlined,
+            color: AppColors.whiteColor,
+          ),
           outlineInputBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(40),
             borderSide: const BorderSide(

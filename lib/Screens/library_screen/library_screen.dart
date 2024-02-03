@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/Models/search_movie_models.dart';
 import 'package:movie_app/Utils/text.dart';
 import 'package:movie_app/constants/colors.dart';
 
@@ -78,14 +79,17 @@ class LibraryScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                       color: AppColors.textFieldFillColor),
                   child: ListTile(
-                    leading: Container(
-                      width: 50,
-                      height: 50,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        image: const DecorationImage(
-                          image: AssetImage("assets/images/video_logo.png"),
-                          fit: BoxFit.cover,
+                    leading: Padding(
+                      padding: const EdgeInsets.only(top: 10.0),
+                      child: Container(
+                        width: 50,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          image: DecorationImage(
+                            image: AssetImage(movieSearchList[3]),
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ),

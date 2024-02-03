@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/Screens/home_screen/utils/bottomsheet.dart';
 import 'package:movie_app/Screens/profile_screen/profile_screen.dart';
-import 'package:movie_app/Utils/button.dart';
 import '../../../Utils/text.dart';
 import '../../../constants/colors.dart';
 
@@ -18,7 +17,7 @@ class HomeHeaderUtilities {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => ProfileScreen(),
+                builder: (context) => const ProfileScreen(),
               ),
             );
           },

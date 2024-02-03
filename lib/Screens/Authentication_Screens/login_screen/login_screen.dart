@@ -30,13 +30,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 111,
                   width: 170,
                   "assets/images/studio_logo.png"),
-              DefaultTextDecoration(
+              const DefaultTextDecoration(
                 text: "Cinem-Amatoriale",
                 textSize: 28,
                 fontWeight: FontWeight.w700,
                 textColor: AppColors.whiteColor,
               ),
-              DefaultTextDecoration(
+              const DefaultTextDecoration(
                 text: "Tutti Film Che Vuol Quando Li Vuoi Tu",
                 textSize: 12,
                 fontWeight: FontWeight.w500,
@@ -56,7 +56,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  DefaultTextDecoration(
+                  const DefaultTextDecoration(
                     text: "Already have an account? ",
                     textSize: 18,
                     fontWeight: FontWeight.w400,
@@ -71,7 +71,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         );
                       },
-                      child: DefaultTextDecoration(
+                      child: const DefaultTextDecoration(
                         text: 'Sign Up',
                         textColor: AppColors.whiteColor,
                         fontWeight: FontWeight.w400,

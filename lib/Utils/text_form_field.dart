@@ -4,7 +4,7 @@ class TextFieldsWidget extends StatelessWidget {
   TextFieldsWidget({
     super.key,
     required this.text,
-    this.icon,
+    this.suffixIcon,
     this.outlineInputBorder,
     this.obscureText = false,
     this.style,
@@ -17,7 +17,7 @@ class TextFieldsWidget extends StatelessWidget {
   });
   String text;
   OutlineInputBorder? outlineInputBorder;
-  final Icon? icon;
+  final Icon? suffixIcon;
   final bool obscureText;
   final TextStyle? style;
   final TextStyle? hintTextStyle;
@@ -34,7 +34,7 @@ class TextFieldsWidget extends StatelessWidget {
       decoration: InputDecoration(
           hintText: text,
           border: outlineInputBorder,
-          suffixIcon: icon,
+          suffixIcon: suffixIcon,
           prefixIcon: preFixIcon,
           prefixIconColor: preFixColor,
           hintStyle: hintTextStyle,

@@ -20,7 +20,6 @@ class _HomeScreenState extends State<HomeScreen> {
   final AllMoviesContainer _allMoviesContainer = AllMoviesContainer();
   final LatestMoviesSection _latestMoviesSection = LatestMoviesSection();
   final TopMoviesSection _topMoviesSection = TopMoviesSection();
-  final AppColors _appColors = AppColors();
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 _latestMoviesSection.buildLatestMovieContainer(
                     "Playlist",
                     "The Hunger Games: The\nBallad of Songbirds &amp;\nSnakes",
-                    "Fantasy",
+                    "Favourite",
                     "assets/images/latest_movie.png",
                     context,
                     color: AppColors.whiteColor,

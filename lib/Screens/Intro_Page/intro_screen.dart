@@ -45,10 +45,9 @@ class _IntoScreenState extends State<IntoScreen> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 23.0),
-                            child: const Text(
+                          const Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 23.0),
+                            child: Text(
                               "Watch movies with Cinem-Amatoriale",
                               textAlign: TextAlign.center,
                               style: TextStyle(
@@ -60,10 +59,9 @@ class _IntoScreenState extends State<IntoScreen> {
                           const SizedBox(
                             height: 15,
                           ),
-                          Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 20.0),
-                            child: const Text(
+                          const Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 20.0),
+                            child: Text(
                               "Watch and download famous & blockbuster movies anytime & everywhere you want",
                               textAlign: TextAlign.center,
                               style: TextStyle(
