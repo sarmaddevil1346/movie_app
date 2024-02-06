@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:movie_app/Screens/Authentication_Screens/login_screen/login_screen.dart';
 import 'package:movie_app/Screens/Authentication_Screens/signup_screen/utils/select_image.dart';
 import 'package:movie_app/Screens/Authentication_Screens/signup_screen/utils/textFieldContainer.dart';
@@ -12,8 +15,8 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  final PicImageSectionWidget _imageSectionWidget = PicImageSectionWidget();
   final TextFieldSection _fieldSection = TextFieldSection();
+  File? finalImage;
 
   @override
   Widget build(BuildContext context) {
@@ -81,7 +84,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   child: Stack(
                     clipBehavior: Clip.none,
                     children: [
-                      _imageSectionWidget.buildPicImageSection(),
+                      buildPicImageSection(context),
                       _fieldSection.buildTextFieldsSection(context)
                     ],
                   ),
@@ -127,6 +130,114 @@ class _SignUpScreenState extends State<SignUpScreen> {
           ),
         ),
       ),
+    );
+  }
+
+  Widget buildPicImageSection(
+    BuildContext context,
+  ) {
+    return Positioned(
+      top: -60,
+      left: 0,
+      right: 0,
+      child: Center(
+        child: SizedBox(
+          width: 150,
+          child: InkWell(
+            onTap: () => _onDialogueBox(
+              context,
+            ),
+            child: finalImage != null
+                ? CircleAvatar(
+                    radius: 80,
+                    backgroundImage: FileImage(finalImage!),
+                  )
+                : CircleAvatar(
+                    radius: 80,
+                    child: Stack(
+                      clipBehavior: Clip.none,
+                      alignment: Alignment.center,
+                      fit: StackFit.expand,
+                      children: [
+                        Positioned(
+                          bottom: -16,
+                          left: 0,
+                          right: 0,
+                          child: Center(
+                            child: Container(
+                              height: 43,
+                              width: 43,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(20),
+                                border: Border.all(
+                                  color: AppColors.loginColor,
+                                  width: 4,
+                                ),
+                              ),
+                              child: const Center(
+                                child: Icon(
+                                  Icons.add,
+                                  size: 30,
+                                  color: AppColors.loginColor,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  imagePicker(ImageSource imageSource) async {
+    ImagePicker imagePicker = ImagePicker();
+    var pickedImage = await imagePicker.pickImage(source: imageSource);
+    if (pickedImage == null) return;
+
+    final tempImage = File(pickedImage.path); // Change this line
+    setState(() {
+      finalImage = tempImage; // Remove the type cast
+    });
+  }
+
+  Future<void> _onDialogueBox(BuildContext context) async {
+    await showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text("Pick Image from Gallery"),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ListTile(
+                onTap: () {
+                  imagePicker(
+                    ImageSource.gallery,
+                  );
+                  Navigator.pop(context);
+                },
+                title: const Text("Pick from Gallery"),
+                leading: const Icon(Icons.photo_album_outlined),
+              ),
+              ListTile(
+                onTap: () {
+                  imagePicker(
+                    ImageSource.camera,
+                  );
+                  Navigator.pop(context);
+                },
+                title: const Text("Pick from Camera"),
+                leading: const Icon(Icons.camera_alt_outlined),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }

@@ -7,27 +7,29 @@ import '../../../constants/colors.dart';
 class BottomSheetSection {
   Future displayBottomSheet(context) {
     return showModalBottomSheet(
-      clipBehavior: Clip.none,
-      barrierColor: Colors.black87,
+      elevation: 0,
+      isDismissible: false,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      barrierColor: Colors.transparent,
       context: context,
       builder: (context) {
-        return SingleChildScrollView(
-          child: Container(
-            clipBehavior: Clip.none,
-            padding: const EdgeInsets.all(16.0),
-            decoration: const BoxDecoration(
-                color: AppColors.loginColor,
-                borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(30),
-                    topLeft: Radius.circular(30))),
+        return Container(
+          height: 600,
+          padding: const EdgeInsets.all(16.0),
+          decoration: const BoxDecoration(
+              color: AppColors.loginColor,
+              borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(30), topLeft: Radius.circular(30))),
+          child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Image.asset(
                   "assets/images/studio_logo.png",
-                  height: 112,
-                  width: 172,
+                  height: 100,
+                  width: 150,
                 ),
                 const Text(
                   "Cinem-Amatoriale",
@@ -50,11 +52,11 @@ class BottomSheetSection {
                 ),
                 Image.asset(
                   "assets/images/premium-quality.png",
-                  height: 112,
-                  width: 172,
+                  height: 102,
+                  width: 152,
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
                 const DefaultTextDecoration(
                   text: "Unlimited Access",
@@ -63,7 +65,7 @@ class BottomSheetSection {
                   textColor: AppColors.whiteColor,
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
                 const DefaultTextDecoration(
                   text: "Get Access to all our features.",
@@ -72,7 +74,7 @@ class BottomSheetSection {
                   textColor: AppColors.whiteColor,
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
                 const DefaultTextDecoration(
                   text: "Choose a Plan",
@@ -81,7 +83,7 @@ class BottomSheetSection {
                   textColor: AppColors.whiteColor,
                 ),
                 const SizedBox(
-                  height: 15,
+                  height: 10,
                 ),
                 Container(
                   height: 82,
@@ -110,7 +112,7 @@ class BottomSheetSection {
                   ),
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
                 const DefaultTextDecoration(
                   text: "Trial Period: 1 Month Free",
@@ -119,7 +121,7 @@ class BottomSheetSection {
                   textColor: AppColors.whiteColor,
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
                 ButtonWidget(
                   text: "Continue",
@@ -131,9 +133,6 @@ class BottomSheetSection {
                   onTap: () {
                     Navigator.pop(context);
                   },
-                ),
-                const SizedBox(
-                  height: 30,
                 ),
               ],
             ),

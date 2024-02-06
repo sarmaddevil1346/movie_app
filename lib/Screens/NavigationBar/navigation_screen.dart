@@ -17,30 +17,39 @@ class NavigationWidgetState extends State<NavigationWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      extendBody: true,
-      body: controller.screens[controller.currentIndex],
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: controller.currentIndex,
-        onDestinationSelected: (value) {
-          setState(() {
-            controller.currentIndex = value;
-          });
-        },
-        destinations: const [
-          NavigationDestination(
-            icon: Icons.home,
-            label: "Home",
-          ),
-          NavigationDestination(
-            icon: Icons.search,
-            label: "Search",
-          ),
-          NavigationDestination(
-            icon: Icons.library_books,
-            label: "Library",
-          ),
-        ],
+    return Container(
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage("assets/images/home_background.png"),
+          fit: BoxFit.cover,
+        ),
+      ),
+      child: Scaffold(
+        extendBody: true,
+        backgroundColor: Colors.transparent,
+        body: controller.screens[controller.currentIndex],
+        bottomNavigationBar: NavigationBar(
+          selectedIndex: controller.currentIndex,
+          onDestinationSelected: (value) {
+            setState(() {
+              controller.currentIndex = value;
+            });
+          },
+          destinations: const [
+            NavigationDestination(
+              icon: Icons.home,
+              label: "Home",
+            ),
+            NavigationDestination(
+              icon: Icons.search,
+              label: "Search",
+            ),
+            NavigationDestination(
+              icon: Icons.library_books,
+              label: "Library",
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -78,7 +87,7 @@ class NavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 97,
+      height: 87,
       alignment: Alignment.center,
       decoration: const BoxDecoration(
           color: AppColors.navBarColor,
@@ -113,7 +122,7 @@ class NavigationBar extends StatelessWidget {
                   Icon(
                     destination.icon,
                     color: selectedIndex == index ? Colors.white : Colors.grey,
-                    size: 30,
+                    size: 25,
                   ),
                   const SizedBox(
                     width: 2,
@@ -124,7 +133,7 @@ class NavigationBar extends StatelessWidget {
                       color: selectedIndex == index
                           ? AppColors.whiteColor
                           : AppColors.whiteColor,
-                      fontSize: 18,
+                      fontSize: 15,
                     ),
                   ),
                 ],

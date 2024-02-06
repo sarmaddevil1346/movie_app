@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/Screens/NavigationBar/navigation_screen.dart';
 import 'package:movie_app/Utils/text.dart';
 import 'package:movie_app/constants/colors.dart';
+
+import '../../Utils/button.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -97,8 +100,6 @@ class ProfileScreen extends StatelessWidget {
                       fontWeight: FontWeight.w300,
                       textSize: 16,
                     ),
-                    trailing: Image.asset(
-                        height: 20, width: 20, "assets/images/pencil.png"),
                   ),
                   const Divider(
                     color: AppColors.whiteColor,
@@ -151,15 +152,23 @@ class ProfileScreen extends StatelessWidget {
               const SizedBox(
                 height: 50,
               ),
-              // ButtonWidget(
-              //   text: 'Update',
-              //   style: const TextStyle(
-              //     color: AppColors.whiteColor,
-              //     fontWeight: FontWeight.w700,
-              //     fontSize: 20,
-              //   ),
-              //   color: AppColors.loginColor,
-              // )
+              ButtonWidget(
+                text: 'Update',
+                style: const TextStyle(
+                  color: AppColors.whiteColor,
+                  fontWeight: FontWeight.w700,
+                  fontSize: 20,
+                ),
+                color: AppColors.loginColor,
+                onTap: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const NavigationWidget(),
+                    ),
+                  );
+                },
+              ),
             ],
           ),
         ),

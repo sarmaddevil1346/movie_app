@@ -6,6 +6,7 @@ import '../../../../Utils/text_form_field.dart';
 import '../../../../constants/colors.dart';
 import '../../../NavigationBar/navigation_screen.dart';
 import '../../forget_screen.dart';
+import '../../signup_screen/utils/password_fiield.dart';
 
 class TextFieldSection {
   Container buildTextFieldContainer(BuildContext context) {
@@ -71,19 +72,13 @@ class TextFieldSection {
           const SizedBox(
             height: 10,
           ),
-          TextFieldsWidget(
-            text: '***************',
-            suffixIcon: const Icon(
-              Icons.visibility_off_outlined,
-              color: AppColors.whiteColor,
-            ),
+          PasswordTextFieldsWidget(
+            text: "***************",
             outlineInputBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(40),
               borderSide: const BorderSide(
                   color: Color.fromRGBO(255, 255, 255, 1), width: 3),
             ),
-            style: const TextStyle(color: Colors.white38),
-            obscureText: true,
           ),
           const SizedBox(
             height: 15,

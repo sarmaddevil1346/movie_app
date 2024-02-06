@@ -3,7 +3,7 @@ import 'package:movie_app/Screens/new_posts/new_movies.dart';
 import '../../../Utils/text.dart';
 import '../../../constants/colors.dart';
 import '../../../Utils/side_cut_clipper.dart';
-import '../../jwdbvobv.dart';
+import '../../video_player/jwdbvobv.dart';
 
 class LatestMoviesSection {
   Widget buildLatestMovieContainer(final String category, final String title,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/constants/colors.dart';
 
 class TextFieldsWidget extends StatelessWidget {
   TextFieldsWidget({
@@ -31,15 +32,17 @@ class TextFieldsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       obscureText: obscureText,
+      style: const TextStyle(color: AppColors.whiteColor),
       decoration: InputDecoration(
           hintText: text,
           border: outlineInputBorder,
           suffixIcon: suffixIcon,
           prefixIcon: preFixIcon,
           prefixIconColor: preFixColor,
-          hintStyle: hintTextStyle,
+          hintStyle: const TextStyle(color: Colors.white60),
           filled: filled,
           prefix: image,
+          labelStyle: const TextStyle(color: Colors.white),
           fillColor: fillColor),
     );
   }
