@@ -112,7 +112,7 @@ class LatestMoviesSection {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const VideoPlayerWidget(),
+                        builder: (context) => VideoPlayerWidget(),
                       ),
                     );
                   },

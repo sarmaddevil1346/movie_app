@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:chewie/chewie.dart';
+import 'package:movie_app/constants/colors.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:video_player/video_player.dart';
 
@@ -103,11 +104,15 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
           child: Stack(
             alignment: Alignment.center,
             children: [
-              _chewieController!.videoPlayerController.value.isInitialized
+              _chewieController != null &&
+                      _chewieController!
+                          .videoPlayerController.value.isInitialized
                   ? Chewie(controller: _chewieController!)
                   : const CircularProgressIndicator(),
               Visibility(
-                visible: _showControls && !_chewieController!.isFullScreen,
+                visible: _showControls &&
+                    _chewieController != null &&
+                    !_chewieController!.isFullScreen,
                 child: _buildCustomControls(),
               ),
             ],
@@ -130,39 +135,44 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          if (_videoPlayerController!.value.isBuffering)
-            const CircularProgressIndicator(
-              valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-            ),
-          if (!_videoPlayerController!.value.isBuffering)
-            // Seek bar
-            Slider(
-              value: currentPosition.inSeconds.toDouble(),
-              min: 0.0,
-              max: totalDuration.inSeconds.toDouble(),
-              onChanged: (value) {
-                _videoPlayerController!
-                    .seekTo(Duration(seconds: value.toInt()));
-              },
-            ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                formatDuration(currentPosition),
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
+          const SizedBox(
+            height: 130,
+          ),
+          // if (_videoPlayerController!.value.isBuffering)
+          //   const CircularProgressIndicator(
+          //     valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+          //   ),
+          // if (!_videoPlayerController!.value.isBuffering)
+          //   // Seek bar
+          Slider(
+            value: currentPosition.inSeconds.toDouble(),
+            min: 0.0,
+            max: totalDuration.inSeconds.toDouble(),
+            onChanged: (value) {
+              _videoPlayerController!.seekTo(Duration(seconds: value.toInt()));
+            },
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  formatDuration(currentPosition),
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 14,
+                  ),
                 ),
-              ),
-              Text(
-                formatDuration(totalDuration),
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
+                Text(
+                  formatDuration(totalDuration),
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 14,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -216,7 +226,16 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
                   color: Colors.white,
                 ),
               ),
+              const SizedBox(
+                width: 70,
+              ),
               PopupMenuButton(
+                color: AppColors.whiteColor,
+                icon: const Icon(
+                  Icons.speed,
+                  size: 28,
+                  color: Colors.white,
+                ),
                 onSelected: (speed) => _changeSpeed(speed),
                 itemBuilder: (BuildContext context) {
                   return [
@@ -233,13 +252,10 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
                   }).toList();
                 },
               ),
-              IconButton(
-                onPressed: () => null,
-                icon: const Icon(
-                  Icons.download_sharp,
-                  size: 30,
-                  color: Colors.white,
-                ),
+              const Icon(
+                Icons.download_sharp,
+                size: 25,
+                color: Colors.white,
               ),
               IconButton(
                 icon: _isFavorite
