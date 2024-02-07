@@ -5,9 +5,16 @@ import 'package:movie_app/constants/colors.dart';
 
 import '../../Utils/button.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
 
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  final String text = "Muhammad Sarmad";
+  final String pass = "**************";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,14 +77,17 @@ class ProfileScreen extends StatelessWidget {
                       fontWeight: FontWeight.w700,
                       textSize: 18,
                     ),
-                    subtitle: const DefaultTextDecoration(
-                      text: 'Jane Copper',
+                    subtitle: DefaultTextDecoration(
+                      text: text.toString(),
                       textColor: AppColors.whiteColor,
                       fontWeight: FontWeight.w300,
                       textSize: 16,
                     ),
-                    trailing: Image.asset(
-                        height: 20, width: 20, "assets/images/pencil.png"),
+                    trailing: InkWell(
+                      onTap: () {},
+                      child: Image.asset(
+                          height: 20, width: 20, "assets/images/pencil.png"),
+                    ),
                   ),
                   const Divider(
                     color: AppColors.whiteColor,
