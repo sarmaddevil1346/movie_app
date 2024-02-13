@@ -7,7 +7,8 @@ import '../../Models/library_models.dart';
 import '../../Utils/text_form_field.dart';
 
 class LibraryScreen extends StatelessWidget {
-  const LibraryScreen({super.key});
+  LibraryScreen({super.key});
+  TextEditingController _textEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +48,7 @@ class LibraryScreen extends StatelessWidget {
                   hintTextStyle: const TextStyle(color: AppColors.whiteColor),
                   outlineInputBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10)),
+                  controller: _textEditingController,
                 ),
                 const SizedBox(
                   height: 20,

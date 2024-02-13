@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/constants/colors.dart';
 
+import '../../Models/sago_screen_models.dart';
 import '../../Utils/text.dart';
 import '../home_screen/utils/latest_movies_container.dart';
 
 class NewMovies extends StatelessWidget {
-  final LatestMoviesSection _latestMoviesSection = LatestMoviesSection();
-
   NewMovies({super.key});
 
   @override
@@ -20,7 +19,20 @@ class NewMovies extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(
-                height: 20,
+                height: 30,
+              ),
+              InkWell(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Icon(
+                  Icons.arrow_back,
+                  color: AppColors.whiteColor,
+                  size: 30,
+                ),
+              ),
+              SizedBox(
+                height: 5,
               ),
               const DefaultTextDecoration(
                 text: "What’s News",
@@ -46,13 +58,39 @@ class NewMovies extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: const EdgeInsets.symmetric(vertical: 10.0),
-                      child: _latestMoviesSection.buildLatestMovieContainer(
-                          "Playlist",
-                          "The Hunger Games: The\nBallad of Songbirds &amp;\nSnakes",
-                          "Fantasy",
-                          "assets/images/latest_movie.png",
-                          context,
-                          color: AppColors.whiteColor),
+                      child: LatestMovieSection(
+                        index: index,
+                        genre: "Playlist",
+                        title:
+                            "The Hunger Games: The\nBallad of Songbirds\n&amp; Snakes",
+                        imagePath: sagoScreenImages[index],
+                        color: AppColors.whiteColor,
+                        iconColor: Colors.black,
+                        container: Container(
+                          height: 27,
+                          width: 90,
+                          decoration: BoxDecoration(
+                            color: Color.fromRGBO(255, 255, 255, .2),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Icon(
+                                Icons.favorite,
+                                color: AppColors.whiteColor,
+                                size: 20,
+                              ),
+                              DefaultTextDecoration(
+                                text: "Favorite",
+                                textSize: 12,
+                                textColor: AppColors.whiteColor,
+                                fontWeight: FontWeight.w700,
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
                     );
                   },
                 ),

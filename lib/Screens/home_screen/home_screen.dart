@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/Models/sago_screen_models.dart';
 import 'package:movie_app/Screens/home_screen/utils/all_movies_container.dart';
 import 'package:movie_app/Screens/home_screen/utils/home_header.dart';
+import 'package:movie_app/Screens/home_screen/utils/latest_movies_container.dart';
+import 'package:movie_app/Screens/new_posts/new_movies.dart';
 import 'package:movie_app/Utils/all_titles_section.dart';
 import 'package:movie_app/Screens/home_screen/utils/top_movies_section.dart';
-
+import 'package:movie_app/Utils/routes/routes_names.dart';
+import 'package:movie_app/Utils/text.dart';
 import '../../constants/colors.dart';
-import 'utils/latest_movies_container.dart';
+import '../Sago/sago_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -18,7 +22,6 @@ class _HomeScreenState extends State<HomeScreen> {
   final HomeHeaderUtilities _headerUtilities = HomeHeaderUtilities();
   final HomeTitleSection _homeTitleSection = HomeTitleSection();
   final AllMoviesContainer _allMoviesContainer = AllMoviesContainer();
-  final LatestMoviesSection _latestMoviesSection = LatestMoviesSection();
   final TopMoviesSection _topMoviesSection = TopMoviesSection();
 
   @override
@@ -55,14 +58,42 @@ class _HomeScreenState extends State<HomeScreen> {
                 _homeTitleSection.buildSectionTitle("Latest Movies",
                     fontWeight: FontWeight.w700),
                 const SizedBox(height: 10),
-                _latestMoviesSection.buildLatestMovieContainer(
-                    "Playlist",
-                    "The Hunger Games: The\nBallad of Songbirds &amp;\nSnakes",
-                    "Favourite",
-                    "assets/images/latest_movie.png",
-                    context,
-                    color: AppColors.whiteColor,
-                    gradient: AppColors.linearGradient),
+                LatestMovieSection(
+                  onTap: () {
+                    Navigator.pushNamed(context, RoutesNames.newMovieScreen);
+                  },
+                  index: 0,
+                  genre: "Playlist",
+                  title:
+                      "The Hunger Games: The\nBallad of Songbirds\n&amp; Snakes",
+                  imagePath: sagoScreenImages[1],
+                  gradient: AppColors.linearGradient,
+                  iconColor: AppColors.whiteColor,
+                  container: Container(
+                    height: 27,
+                    width: 90,
+                    decoration: BoxDecoration(
+                      color: Color.fromRGBO(255, 255, 255, .2),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Icon(
+                          Icons.favorite,
+                          color: AppColors.whiteColor,
+                          size: 20,
+                        ),
+                        DefaultTextDecoration(
+                          text: "Favorite",
+                          textSize: 12,
+                          textColor: AppColors.whiteColor,
+                          fontWeight: FontWeight.w700,
+                        )
+                      ],
+                    ),
+                  ),
+                ),
                 const SizedBox(
                   height: 10,
                 ),
@@ -74,6 +105,46 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(
                   height: 200,
                   child: _topMoviesSection.topMoviesContainer(),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    DefaultTextDecoration(
+                        text: "Sago",
+                        textSize: 20,
+                        fontWeight: FontWeight.w700,
+                        textColor: AppColors.whiteColor),
+                    InkWell(
+                      onTap: () {
+                        Navigator.pushNamed(context, RoutesNames.sagaScreen);
+                      },
+                      child: DefaultTextDecoration(
+                          text: "View All",
+                          textSize: 20,
+                          fontWeight: FontWeight.w700,
+                          textColor: AppColors.whiteColor),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: List.generate(
+                      sagoScreenImages.length,
+                      (index) => Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                            clipBehavior: Clip.antiAlias,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: sagoContainerSection(index: index)),
+                      ),
+                    ),
+                  ),
                 ),
                 const SizedBox(
                   height: 10,

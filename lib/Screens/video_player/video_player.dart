@@ -6,8 +6,12 @@ import 'package:movie_app/constants/colors.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:video_player/video_player.dart';
 
+import '../../Utils/movie_list.dart';
+
 class VideoPlayerWidget extends StatefulWidget {
-  const VideoPlayerWidget({Key? key}) : super(key: key);
+  int index;
+
+  VideoPlayerWidget({required this.index});
 
   @override
   _VideoPlayerWidgetState createState() => _VideoPlayerWidgetState();
@@ -60,16 +64,18 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
   }
 
   Future<void> _initializeVideoPlayer() async {
-    _videoPlayerController = VideoPlayerController.network(
-        "https://sample-videos.com/video321/mp4/720/big_buck_bunny_720p_1mb.mp4");
+    _videoPlayerController =
+        VideoPlayerController.network(moviesLinks[widget.index]);
 
     await _videoPlayerController!.initialize(); // Initialize video player
 
     _chewieController = ChewieController(
       videoPlayerController: _videoPlayerController!,
-      autoPlay: true, // Auto play the video
+      autoPlay: true,
+      // Auto play the video
       looping: true,
-      showControls: false, // Initially hide controls
+      showControls: false,
+      // Initially hide controls
       customControls: _buildCustomControls(),
     );
 

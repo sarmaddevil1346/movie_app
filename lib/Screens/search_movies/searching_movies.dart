@@ -15,6 +15,8 @@ class SearchingMovies extends StatefulWidget {
 
 class _SearchingMoviesState extends State<SearchingMovies> {
   final HomeTitleSection _homeTitleSection = HomeTitleSection();
+  final TextEditingController _textEditingController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -48,6 +50,7 @@ class _SearchingMoviesState extends State<SearchingMovies> {
                   hintTextStyle: const TextStyle(color: AppColors.whiteColor),
                   outlineInputBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10)),
+                  controller: _textEditingController,
                 ),
                 const SizedBox(
                   height: 20,

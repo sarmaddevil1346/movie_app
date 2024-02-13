@@ -61,7 +61,7 @@ class NavigationController {
   final screens = [
     const HomeScreen(),
     const SearchingMovies(),
-    const LibraryScreen(),
+    LibraryScreen(),
   ];
 }
 

@@ -1,12 +1,19 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:movie_app/Screens/Authentication_Screens/signup_screen/signUp_screen.dart';
-import 'package:movie_app/Screens/NavigationBar/navigation_screen.dart';
-import 'package:movie_app/Screens/profile_screen/profile_screen.dart';
-import 'package:movie_app/Screens/sago_screen.dart';
 
-import 'package:movie_app/Screens/splash_screen.dart';
+import 'package:movie_app/Screens/splash_screen/splash_screen.dart';
+import 'package:movie_app/Utils/routes/routes.dart';
+import 'package:movie_app/Utils/routes/routes_names.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+      options: const FirebaseOptions(
+          apiKey: 'AIzaSyD2sIPQdvOZ5XI64FUa7fKUURSL1utcwII',
+          appId: '1:94491395961:android:88a0ea26b4d21e2826d1a8',
+          messagingSenderId: '94491395961',
+          projectId: 'movieapp-ca668',
+          storageBucket: 'movieapp-ca668.appspot.com'));
   runApp(const MyApp());
 }
 
@@ -24,7 +31,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const SagoScreen(),
+      initialRoute: RoutesNames.splashScreen,
+      onGenerateRoute: Routes.generateRoutes,
     );
   }
 }

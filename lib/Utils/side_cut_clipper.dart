@@ -11,7 +11,7 @@ class SideCutClipper extends CustomClipper<Path> {
     double height = size.height;
     double startY = (height - height / 2.5) - yFactor;
     double xVal = size.width;
-    double yVal = 3;
+    double yVal = 0;
     final path = Path();
 
     path.lineTo(xVal, yVal);

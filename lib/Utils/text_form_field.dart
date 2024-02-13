@@ -15,9 +15,12 @@ class TextFieldsWidget extends StatelessWidget {
     this.filled = false,
     this.fillColor,
     this.image,
+    required this.controller,
+    this.focusNode,
   });
-  String text;
-  OutlineInputBorder? outlineInputBorder;
+
+  final String text;
+  final OutlineInputBorder? outlineInputBorder;
   final Icon? suffixIcon;
   final bool obscureText;
   final TextStyle? style;
@@ -27,12 +30,15 @@ class TextFieldsWidget extends StatelessWidget {
   final bool? filled;
   final Color? fillColor;
   final Image? image;
+  final TextEditingController controller;
+  final FocusNode? focusNode;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       obscureText: obscureText,
       style: const TextStyle(color: AppColors.whiteColor),
+      controller: controller,
       decoration: InputDecoration(
           hintText: text,
           border: outlineInputBorder,

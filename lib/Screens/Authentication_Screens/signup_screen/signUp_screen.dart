@@ -1,11 +1,16 @@
 import 'dart:io';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:movie_app/Screens/Authentication_Screens/login_screen/login_screen.dart';
-import 'package:movie_app/Screens/Authentication_Screens/signup_screen/utils/select_image.dart';
-import 'package:movie_app/Screens/Authentication_Screens/signup_screen/utils/textFieldContainer.dart';
+import 'package:movie_app/Screens/Authentication_Screens/signup_screen/utils/password_fiield.dart';
+import 'package:movie_app/Utils/routes/routes_names.dart';
 import 'package:movie_app/constants/colors.dart';
+import '../../../Utils/alert_dialogue.dart';
+import '../../../Utils/button.dart';
+import '../../../Utils/text_form_field.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -15,7 +20,15 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  final TextFieldSection _fieldSection = TextFieldSection();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  TextEditingController _nameController = TextEditingController();
+
+  TextEditingController _emailController = TextEditingController();
+
+  TextEditingController _passwordController = TextEditingController();
+
+  TextEditingController _confirmPasswordController = TextEditingController();
+
   File? finalImage;
 
   @override
@@ -35,12 +48,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 children: [
                   InkWell(
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const LoginScreen(),
-                          ),
-                        );
+                        Navigator.pushReplacementNamed(
+                            context, RoutesNames.loginScreen);
                       },
                       child: const Padding(
                         padding: EdgeInsets.symmetric(horizontal: 20.0),
@@ -85,7 +94,119 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     clipBehavior: Clip.none,
                     children: [
                       buildPicImageSection(context),
-                      _fieldSection.buildTextFieldsSection(context)
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const SizedBox(
+                            height: 100,
+                          ),
+                          const Text(
+                            "Full Name  ",
+                            style: TextStyle(
+                                fontSize: 20,
+                                color: AppColors.whiteColor,
+                                fontWeight: FontWeight.w700),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          TextFieldsWidget(
+                            text: 'Jane Cooper',
+                            outlineInputBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(40),
+                              borderSide: const BorderSide(
+                                  color: Color.fromRGBO(255, 255, 255, 1),
+                                  width: 3),
+                            ),
+                            style: const TextStyle(color: Colors.white38),
+                            controller: _nameController,
+                          ),
+                          const Text(
+                            "Email address",
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: AppColors.whiteColor,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          TextFieldsWidget(
+                            text: 'janecooper@gmail.com',
+                            outlineInputBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(40),
+                              borderSide: const BorderSide(
+                                  color: Color.fromRGBO(255, 255, 255, 1),
+                                  width: 3),
+                            ),
+                            style: const TextStyle(color: Colors.white38),
+                            controller: _emailController,
+                          ),
+                          const Text(
+                            "Choose a password",
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: AppColors.whiteColor,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          PasswordTextFieldsWidget(
+                            text: "***************",
+                            outlineInputBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(40),
+                              borderSide: const BorderSide(
+                                  color: Color.fromRGBO(255, 255, 255, 1),
+                                  width: 3),
+                            ),
+                            controller: _passwordController,
+                          ),
+                          const Text(
+                            "Confirm password",
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: AppColors.whiteColor,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          PasswordTextFieldsWidget(
+                            text: "***************",
+                            outlineInputBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(40),
+                              borderSide: const BorderSide(
+                                  color: Color.fromRGBO(255, 255, 255, 1),
+                                  width: 3),
+                            ),
+                            controller: _confirmPasswordController,
+                          ),
+                          const SizedBox(
+                            height: 30,
+                          ),
+                          ButtonWidget(
+                            text: "Sign Up",
+                            style: const TextStyle(
+                              color: AppColors.loginColor,
+                              fontWeight: FontWeight.w700,
+                              fontSize: 16,
+                            ),
+                            onTap: () {
+                              signUp(
+                                _nameController.text,
+                                _emailController.text,
+                                _passwordController.text,
+                                _confirmPasswordController.text,
+                              );
+                            },
+                          )
+                        ],
+                      ),
                     ],
                   ),
                 ),
@@ -106,12 +227,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                   InkWell(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const LoginScreen(),
-                        ),
-                      );
+                      Navigator.pushNamed(context, RoutesNames.loginScreen);
                     },
                     child: const Text(
                       "Sign In",
@@ -192,6 +308,94 @@ class _SignUpScreenState extends State<SignUpScreen> {
         ),
       ),
     );
+  }
+
+  Future<void> signUp(
+    String name,
+    String email,
+    String password,
+    String confirmPassword,
+  ) async {
+    showDialog(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return Center(
+          child: SpinKitCircle(
+            size: 50,
+            color: AppColors.loginColor,
+          ), // Loading indicator
+        );
+      },
+    );
+
+    if (name.isEmpty ||
+        email.isEmpty ||
+        password.isEmpty ||
+        confirmPassword.isEmpty ||
+        finalImage == null) {
+      Navigator.pop(context); // Dismiss the loading dialog
+      UtilsHelper.customAlertDialogue(context, 'Fill all the data');
+      return;
+    }
+
+    if (password != confirmPassword) {
+      Navigator.pop(context); // Dismiss the loading dialog
+      UtilsHelper.customAlertDialogue(
+          context, 'Password and Confirm Password do not match');
+      return;
+    }
+
+    if (password.length < 6) {
+      Navigator.pop(context);
+      UtilsHelper.customAlertDialogue(
+          context, 'Password must be at least 6 characters long');
+      return;
+    }
+
+    try {
+      UserCredential userCredential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      addData(
+        _nameController.text,
+        _emailController.text,
+        _passwordController.text,
+        userCredential.user!.uid,
+      );
+
+      Navigator.pop(context);
+      Navigator.pushReplacementNamed(context, RoutesNames.navScreen);
+    } on FirebaseAuthException catch (e) {
+      Navigator.pop(context);
+      UtilsHelper.customAlertDialogue(context, e.code.toString());
+    }
+  }
+
+  addData(String name, String email, String password, var id) async {
+    try {
+      UploadTask uploadTask = FirebaseStorage.instance
+          .ref("profile_image")
+          .child("imageID")
+          .putFile(finalImage!);
+      TaskSnapshot taskSnapshot = await uploadTask;
+      final url = await taskSnapshot.ref.getDownloadURL();
+
+      DocumentReference documentReference =
+          FirebaseFirestore.instance.collection("Users").doc(id);
+
+      await documentReference.set({
+        "Email": email,
+        "Name": name,
+        "userId": id,
+        "Password": password,
+        "url": url,
+      });
+    } on FirebaseAuthException catch (e) {
+      UtilsHelper.customAlertDialogue(context, e.code.toString());
+    }
   }
 
   imagePicker(ImageSource imageSource) async {

@@ -1,6 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_app/Utils/button.dart';
+import 'package:movie_app/Utils/routes/routes_names.dart';
 import 'package:movie_app/constants/colors.dart';
+import '../../Utils/alert_dialogue.dart';
 import '../../Utils/text.dart';
 import '../../Utils/text_form_field.dart';
 import 'login_screen/login_screen.dart';
@@ -13,6 +16,8 @@ class ForgetScreen extends StatefulWidget {
 }
 
 class _ForgetScreenState extends State<ForgetScreen> {
+  TextEditingController textEditingController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size;
@@ -39,12 +44,8 @@ class _ForgetScreenState extends State<ForgetScreen> {
                     ),
                     InkWell(
                         onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const LoginScreen(),
-                            ),
-                          );
+                          Navigator.pushReplacementNamed(
+                              context, RoutesNames.loginScreen);
                         },
                         child: const Align(
                           alignment: Alignment.topLeft,
@@ -119,6 +120,7 @@ class _ForgetScreenState extends State<ForgetScreen> {
                             color: Color.fromRGBO(255, 255, 255, 1), width: 3),
                       ),
                       style: const TextStyle(color: Colors.white38),
+                      controller: textEditingController,
                     ),
                     const SizedBox(
                       height: 10,
@@ -134,12 +136,7 @@ class _ForgetScreenState extends State<ForgetScreen> {
                             fontSize: 16,
                             fontWeight: FontWeight.w700),
                         onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const LoginScreen(),
-                            ),
-                          );
+                          forget(textEditingController.text);
                         },
                       ),
                     ),
@@ -154,5 +151,18 @@ class _ForgetScreenState extends State<ForgetScreen> {
         ),
       ),
     );
+  }
+
+  Future<void> forget(String email) async {
+    if (email.isEmpty) {
+      UtilsHelper.customAlertDialogue(context, 'Fill all the data');
+    } else {
+      try {
+        await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+        Navigator.pushReplacementNamed(context, RoutesNames.loginScreen);
+      } on FirebaseAuthException catch (e) {
+        UtilsHelper.customAlertDialogue(context, e.code.toString());
+      }
+    }
   }
 }

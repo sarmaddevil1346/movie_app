@@ -1,94 +1,97 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/Screens/new_posts/new_movies.dart';
 import '../../../Utils/text.dart';
 import '../../../constants/colors.dart';
 import '../../../Utils/side_cut_clipper.dart';
-import '../../video_player/jwdbvobv.dart';
+import '../../video_player/video_player.dart';
 
-class LatestMoviesSection {
-  Widget buildLatestMovieContainer(final String category, final String title,
-      final String genre, final String imagePath, context,
-      {LinearGradient? gradient, Color? color, Color? iconColor}) {
+class LatestMovieSection extends StatelessWidget {
+  LatestMovieSection({
+    super.key,
+    required this.imagePath,
+    this.genre = "",
+    this.category = "",
+    this.onTap,
+    this.color,
+    this.gradient,
+    this.title = "",
+    this.iconColor,
+    this.container,
+    required this.index,
+  });
+
+  final String category;
+  final String genre;
+  final LinearGradient? gradient;
+  final Color? color;
+  final Color? iconColor;
+  final VoidCallback? onTap;
+  final String imagePath;
+  final String? title;
+  final Container? container;
+  final int index;
+
+  @override
+  Widget build(BuildContext context) {
     return SizedBox(
-      height: 154,
+      height: 165,
+      width: double.infinity,
       child: Stack(
         children: [
           ClipPath(
             clipper: SideCutClipper(),
             child: InkWell(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => NewMovies(),
-                    ));
-              },
+              onTap: onTap,
               child: Container(
                 height: 154,
                 width: double.infinity,
                 decoration: BoxDecoration(
                   color: const Color.fromRGBO(255, 255, 255, 0.3),
-                  borderRadius: BorderRadius.circular(10),
                 ),
                 child: Row(
                   children: [
-                    const SizedBox(width: 10),
                     Container(
-                      height: 130,
-                      width: 141,
+                      height: 154,
+                      width: 130,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
                           image: DecorationImage(
-                            image: AssetImage(
-                              imagePath,
-                            ),
-                          )),
+                        fit: BoxFit.fitHeight,
+                        image: NetworkImage(
+                          imagePath,
+                        ),
+                      )),
                     ),
-                    const SizedBox(width: 6),
+                    const SizedBox(width: 8),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        SizedBox(
+                          height: 5,
+                        ),
                         DefaultTextDecoration(
-                          text: category,
+                          text: genre.toString(),
                           textSize: 16,
+                          fontWeight: FontWeight.w300,
                           textColor: AppColors.whiteColor,
                         ),
-                        DefaultTextDecoration(
-                          text: title,
-                          textSize: 12,
-                          fontWeight: FontWeight.w700,
-                          textColor: AppColors.whiteColor,
-                          maxLines: 5,
-                        ),
-                        Container(
-                          width: 110,
-                          height: 35,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            border: Border.all(
-                              color: AppColors.whiteColor,
-                            ),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Icon(
-                                Icons.favorite,
-                                size: 22,
-                                color: AppColors.whiteColor,
-                              ),
-                              Text(
-                                genre,
-                                style: const TextStyle(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w700,
-                                  color: AppColors.whiteColor,
-                                ),
-                              ),
-                            ],
+                        Expanded(
+                          child: DefaultTextDecoration(
+                            text: title.toString(),
+                            textSize: 15,
+                            fontWeight: FontWeight.w700,
+                            textColor: AppColors.whiteColor,
+                            maxLines: 5,
                           ),
                         ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        if (container != null) ...[
+                          Align(alignment: Alignment.center, child: container!),
+                        ],
+                        SizedBox(
+                          height: 20,
+                        )
                       ],
                     ),
                   ],
@@ -98,7 +101,7 @@ class LatestMoviesSection {
           ),
           Positioned(
             right: 0,
-            bottom: 11,
+            bottom: 22,
             child: Container(
               height: 45,
               width: 45,
@@ -112,7 +115,9 @@ class LatestMoviesSection {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => VideoPlayerWidget(),
+                        builder: (context) => VideoPlayerWidget(
+                          index: index,
+                        ),
                       ),
                     );
                   },

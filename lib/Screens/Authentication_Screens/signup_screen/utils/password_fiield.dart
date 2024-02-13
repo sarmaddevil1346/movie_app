@@ -2,16 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:movie_app/constants/colors.dart';
 
 class PasswordTextFieldsWidget extends StatefulWidget {
-  final String text;
-  final ValueChanged<bool>? onToggleVisibility;
-  final OutlineInputBorder outlineInputBorder;
-
   const PasswordTextFieldsWidget({
     Key? key,
     required this.text,
     this.onToggleVisibility,
     required this.outlineInputBorder,
+    required this.controller,
   }) : super(key: key);
+  final String text;
+  final ValueChanged<bool>? onToggleVisibility;
+  final OutlineInputBorder outlineInputBorder;
+  final TextEditingController controller;
 
   @override
   _PasswordTextFieldsWidgetState createState() =>
@@ -33,6 +34,7 @@ class _PasswordTextFieldsWidgetState extends State<PasswordTextFieldsWidget> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: widget.controller,
       obscureText: _isObscure,
       decoration: InputDecoration(
         hintText: widget.text,

@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/Screens/Authentication_Screens/login_screen/login_screen.dart';
+import 'package:movie_app/Utils/routes/routes_names.dart';
 import 'package:movie_app/constants/colors.dart';
 
-class IntoScreen extends StatefulWidget {
-  const IntoScreen({super.key});
+class IntroScreen extends StatefulWidget {
+  const IntroScreen({super.key});
 
   @override
-  State<IntoScreen> createState() => _IntoScreenState();
+  State<IntroScreen> createState() => _IntroScreenState();
 }
 
-class _IntoScreenState extends State<IntoScreen> {
+class _IntroScreenState extends State<IntroScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,12 +79,8 @@ class _IntoScreenState extends State<IntoScreen> {
                                 const EdgeInsets.symmetric(horizontal: 15.0),
                             child: InkWell(
                               onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => const LoginScreen(),
-                                  ),
-                                );
+                                Navigator.pushReplacementNamed(
+                                    context, RoutesNames.loginScreen);
                               },
                               child: Container(
                                 height: 60,
